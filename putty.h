@@ -1241,6 +1241,7 @@ NORETURN void cleanup_exit(int);
 #define CONFIG_OPTIONS(X) \
     /* X(value-type, subkey-type, keyword) */ \
     X(STR, NONE, host) \
+	X(BOOL, NONE, dx200) \
     X(INT, NONE, port) \
     X(INT, NONE, protocol) /* PROT_SSH, PROT_TELNET etc */ \
     X(INT, NONE, addressfamily) /* ADDRTYPE_IPV[46] or ADDRTYPE_UNSPEC */ \

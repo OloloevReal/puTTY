@@ -304,6 +304,7 @@ struct terminal_tag {
     int bellovl_s;
     int bellovl_t;
     bool bidi;
+	bool dx200;
     bool bksp_is_delete;
     bool blink_cur;
     bool blinktext;

@@ -4636,6 +4636,39 @@ static int TranslateKey(UINT message, WPARAM wParam, LPARAM lParam,
 	    for (i = 0; i < r; i++) {
 		wchar_t wch = keys_unicode[i];
 
+		int tmp_shift = keystate[VK_SHIFT];
+		if (conf_get_bool(conf, CONF_dx200))
+		{
+			if (keystate[VK_CAPITAL] == 0)
+			{
+				if (wch < 0x80)
+				{
+					if (tmp_shift == 128 || tmp_shift == 129)
+						wch = tolower(wch);
+					else
+						wch = toupper(wch);
+				}
+				else
+				{
+					wch = toupper(wch);
+				}
+			}
+			else
+			{
+				if (wch > 96) {
+					wch = toupper(wch);
+				}
+				else
+				{
+					wch = tolower(wch);
+				}
+			}
+		}
+		else
+		{
+			wch = keys_unicode[i];
+		}
+
 		if (compose_state == 2 && wch >= ' ' && wch < 0x80) {
 		    compose_char = wch;
 		    compose_state++;
