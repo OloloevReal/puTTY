@@ -1471,6 +1471,7 @@ void term_copy_stuff_from_conf(Terminal *term)
     term->bellovl_s = conf_get_int(term->conf, CONF_bellovl_s);
     term->bellovl_t = conf_get_int(term->conf, CONF_bellovl_t);
     term->bidi = conf_get_bool(term->conf, CONF_bidi);
+	term->dx200 = conf_get_bool(term->conf, CONF_dx200);
     term->bksp_is_delete = conf_get_bool(term->conf, CONF_bksp_is_delete);
     term->blink_cur = conf_get_bool(term->conf, CONF_blink_cur);
     term->blinktext = conf_get_bool(term->conf, CONF_blinktext);

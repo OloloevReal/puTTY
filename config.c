@@ -1844,6 +1844,9 @@ void setup_config_box(struct controlbox *b, bool midsession,
     ctrl_checkbox(s, "Disable bidirectional text display",
 		  'd', HELPCTX(features_bidi), conf_checkbox_handler,
 		  I(CONF_bidi));
+	ctrl_checkbox(s, "Use inverse CAPSLOCK (DX200)",
+		NO_SHORTCUT, HELPCTX(no_help), conf_checkbox_handler,
+		I(CONF_dx200));
 
     /*
      * The Window panel.
