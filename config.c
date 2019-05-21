@@ -1723,6 +1723,68 @@ void setup_config_box(struct controlbox *b, bool midsession,
 		  HELPCTX(terminal_printing),
 		  printerbox_handler, P(NULL), P(NULL));
 
+	/*
+	* The Terminal/HotKey panel.
+	*/
+	ctrl_settitle(b, "Terminal/HotKeys", "Settings HotKeys functional");
+
+	s = ctrl_getset(b, "Terminal/HotKeys", "mappings", "Values HotKeys:");
+
+	ctrl_editbox(s, "F2", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f2),
+		I(1));
+
+	ctrl_editbox(s, "F3", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f3),
+		I(1));
+
+	ctrl_editbox(s, "F4", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f4),
+		I(1));
+
+	ctrl_editbox(s, "F5", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f5),
+		I(1));
+
+	ctrl_editbox(s, "F6", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f6),
+		I(1));
+
+	ctrl_editbox(s, "F7", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f7),
+		I(1));
+
+	ctrl_editbox(s, "F8", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f8),
+		I(1));
+
+	ctrl_editbox(s, "F9", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f9),
+		I(1));
+
+	ctrl_editbox(s, "F10", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f10),
+		I(1));
+
+	ctrl_editbox(s, "F11", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f11),
+		I(1));
+
+	ctrl_editbox(s, "F12", NO_SHORTCUT, 90,
+		HELPCTX(no_help),
+		conf_editbox_handler, I(CONF_f12),
+		I(1));
+
     /*
      * The Terminal/Keyboard panel.
      */
@@ -1746,7 +1808,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
 		      conf_radiobutton_handler,
 		      I(CONF_funky_type),
 		      "ESC[n~", I(0), "Linux", I(1), "Xterm R6", I(2),
-		      "VT400", I(3), "VT100+", I(4), "SCO", I(5), NULL);
+		      "VT400", I(3), "VT100+", I(4), "SCO", I(5), "DX200 HotKeys(F2-F12)", I(6), NULL);
 
     s = ctrl_getset(b, "Terminal/Keyboard", "appkeypad",
 		    "Application keypad settings:");

@@ -406,7 +406,8 @@ enum {
     FUNKY_XTERM,
     FUNKY_VT400,
     FUNKY_VT100P,
-    FUNKY_SCO
+    FUNKY_SCO,
+	FUNKY_DX200
 };
 
 enum {
@@ -1485,6 +1486,17 @@ NORETURN void cleanup_exit(int);
     X(INT, NONE, shadowboldoffset) /* in pixels */ \
     X(BOOL, NONE, crhaslf) \
     X(STR, NONE, winclass) \
+	X(STR, NONE, f2) \
+	X(STR, NONE, f3) \
+	X(STR, NONE, f4) \
+	X(STR, NONE, f5) \
+	X(STR, NONE, f6) \
+	X(STR, NONE, f7) \
+	X(STR, NONE, f8) \
+	X(STR, NONE, f9) \
+	X(STR, NONE, f10) \
+	X(STR, NONE, f11) \
+	X(STR, NONE, f12) \
     /* end of list */
 
 /* Now define the actual enum of option keywords using that macro. */
