@@ -4082,6 +4082,51 @@ static void init_winfuncs(void)
     GET_WINDOWS_FUNCTION_PP(winmm_module, PlaySound);
 }
 
+static void SendHotKeys(WPARAM wParam)
+{
+	char cmd[128];
+	char * ptr;
+
+	;
+	switch (wParam) {
+	case VK_F2: strcpy(cmd, conf_get_str(conf, CONF_f2)); break;
+	case VK_F3: strcpy(cmd, conf_get_str(conf, CONF_f3)); break;
+	case VK_F4: strcpy(cmd, conf_get_str(conf, CONF_f4)); break;
+	case VK_F5: strcpy(cmd, conf_get_str(conf, CONF_f5)); break;
+	case VK_F6: strcpy(cmd, conf_get_str(conf, CONF_f6)); break;
+	case VK_F7: strcpy(cmd, conf_get_str(conf, CONF_f7)); break;
+	case VK_F8: strcpy(cmd, conf_get_str(conf, CONF_f8)); break;
+	case VK_F9: strcpy(cmd, conf_get_str(conf, CONF_f9)); break;
+	case VK_F10: strcpy(cmd, conf_get_str(conf, CONF_f10)); break;
+	case VK_F11: strcpy(cmd, conf_get_str(conf, CONF_f11)); break;
+	case VK_F12: strcpy(cmd, conf_get_str(conf, CONF_f12)); break;
+	};
+
+	ptr = strtok(cmd, "|");
+
+	while (ptr != NULL)
+	{
+		SendStrToTerminal(ptr);
+		ptr = strtok(NULL, "|");
+	}
+}
+
+static int SendStrToTerminal(const char * str) {
+	char c;
+	int i;
+	if (strlen(str) <= 0) return;
+	term_seen_key_event(term);
+	for (i = 0; i < strlen(str); i++) {
+		c = (unsigned char)str[i];
+		if (ldisc)
+			lpage_send(ldisc, kbd_codepage, &c, 1, 1);
+	}
+
+	SendMessage(hwnd, WM_KEYDOWN, VK_RETURN, 0);
+	return 0;
+}
+
+
 /*
  * Translate a WM_(SYS)?KEY(UP|DOWN) message into a string of ASCII
  * codes. Returns number of bytes used, zero to drop the message,
@@ -4528,7 +4573,12 @@ static int TranslateKey(UINT message, WPARAM wParam, LPARAM lParam,
 	  case VK_F18: fkey_number = 18; goto numbered_function_key;
 	  case VK_F19: fkey_number = 19; goto numbered_function_key;
 	  case VK_F20: fkey_number = 20; goto numbered_function_key;
-          numbered_function_key:
+	  numbered_function_key:
+			  if (funky_type == FUNKY_DX200 && fkey_number >= 2 && fkey_number <= 12)
+			  {
+				  SendHotKeys(wParam);
+				  return 0;
+			  }
             p += format_function_key((char *)p, term, fkey_number,
                                      shift_state & 1, shift_state & 2);
             return p - output;

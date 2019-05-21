@@ -778,6 +778,19 @@ void save_open_settings(settings_w *sesskey, Conf *conf)
     write_setting_b(sesskey, "ConnectionSharing", conf_get_bool(conf, CONF_ssh_connection_sharing));
     write_setting_b(sesskey, "ConnectionSharingUpstream", conf_get_bool(conf, CONF_ssh_connection_sharing_upstream));
     write_setting_b(sesskey, "ConnectionSharingDownstream", conf_get_bool(conf, CONF_ssh_connection_sharing_downstream));
+	write_setting_s(sesskey, "F2", conf_get_str(conf, CONF_f2));
+	write_setting_s(sesskey, "F3", conf_get_str(conf, CONF_f3));
+	write_setting_s(sesskey, "F4", conf_get_str(conf, CONF_f4));
+	write_setting_s(sesskey, "F5", conf_get_str(conf, CONF_f5));
+	write_setting_s(sesskey, "F6", conf_get_str(conf, CONF_f6));
+	write_setting_s(sesskey, "F7", conf_get_str(conf, CONF_f7));
+	write_setting_s(sesskey, "F8", conf_get_str(conf, CONF_f8));
+	write_setting_s(sesskey, "F9", conf_get_str(conf, CONF_f9));
+	write_setting_s(sesskey, "F10", conf_get_str(conf, CONF_f10));
+	write_setting_s(sesskey, "F11", conf_get_str(conf, CONF_f11));
+	write_setting_s(sesskey, "F12", conf_get_str(conf, CONF_f12));
+
+
     wmap(sesskey, "SSHManualHostKeys", conf, CONF_ssh_manual_hostkeys, false);
 }
 
@@ -1244,6 +1257,17 @@ void load_open_settings(settings_r *sesskey, Conf *conf)
     gppb(sesskey, "ConnectionSharingDownstream", true,
          conf, CONF_ssh_connection_sharing_downstream);
     gppmap(sesskey, "SSHManualHostKeys", conf, CONF_ssh_manual_hostkeys);
+	gpps(sesskey, "F2", "", conf, CONF_f2);
+	gpps(sesskey, "F3", "", conf, CONF_f3);
+	gpps(sesskey, "F4", "", conf, CONF_f4);
+	gpps(sesskey, "F5", "", conf, CONF_f5);
+	gpps(sesskey, "F6", "", conf, CONF_f6);
+	gpps(sesskey, "F7", "", conf, CONF_f7);
+	gpps(sesskey, "F8", "", conf, CONF_f8);
+	gpps(sesskey, "F9", "", conf, CONF_f9);
+	gpps(sesskey, "F10", "", conf, CONF_f10);
+	gpps(sesskey, "F11", "", conf, CONF_f11);
+	gpps(sesskey, "F12", "", conf, CONF_f12);
 }
 
 bool do_defaults(const char *session, Conf *conf)
