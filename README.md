@@ -9,9 +9,14 @@ The main reason of this fork is to adapt this fantastic terminal client for comf
 - Added the ability to activate the inverted value of CAPS LOCK. The MML terminal accepts commands sent only used capital letters.
 - Functional keys F2-F12 can be used for send configutable commands to terminal (like it was in RWIN)
 
+### Screenshots:
+
+![1](images/image_1.PNG)
+![2](images/image_2.PNG)
+![3](images/image_3.PNG)
 
 #### Pre-compiled binary files (VS2017 Windows10) :
-- [Windows x86](./builds/x86/)
-- [Windows x64](builds\x64\)
+- [Windows x86](https://github.com/OloloevReal/putty/tree/DX/builds/x86)
+- [Windows x64](https://github.com/OloloevReal/putty/tree/DX/builds/x64)
 
-Original [README]() and [Licence]()
+Original [README](https://raw.githubusercontent.com/OloloevReal/putty/DX/README) and [LICENCE](https://raw.githubusercontent.com/OloloevReal/putty/DX/LICENCE)
